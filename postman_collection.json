@@ -1,0 +1,124 @@
+{
+  "info": {
+    "_postman_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "name": "Simple To-Do App Backend API",
+    "description": "Postman Collection for testing Simple To-Do App Backend API (Assignment Module 15)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000",
+      "type": "string"
+    },
+    {
+      "key": "todo_id",
+      "value": "REPLACE_WITH_ACTUAL_ID",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "0. Health Check & Welcome",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/",
+          "host": ["{{base_url}}"],
+          "path": [""]
+        },
+        "description": "Check if backend server is up and view available endpoints"
+      },
+      "response": []
+    },
+    {
+      "name": "1. Create Task (POST /todos)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Complete Module 15 Assignment\",\n  \"description\": \"Build Express and MongoDB Backend with CRUD APIs\",\n  \"completed\": false\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/todos",
+          "host": ["{{base_url}}"],
+          "path": ["todos"]
+        },
+        "description": "Create a new todo task"
+      },
+      "response": []
+    },
+    {
+      "name": "2. Get All Tasks (GET /todos)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/todos",
+          "host": ["{{base_url}}"],
+          "path": ["todos"]
+        },
+        "description": "Fetch all todo tasks"
+      },
+      "response": []
+    },
+    {
+      "name": "3. Get Task by ID (GET /todos/:id)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/todos/{{todo_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["todos", "{{todo_id}}"]
+        },
+        "description": "Fetch a single todo task by its MongoDB _id"
+      },
+      "response": []
+    },
+    {
+      "name": "4. Update Task (PUT /todos/:id)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Complete Module 15 Assignment (Updated)\",\n  \"description\": \"Tested all APIs in Postman successfully\",\n  \"completed\": true\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/todos/{{todo_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["todos", "{{todo_id}}"]
+        },
+        "description": "Update task title, description, or completed status"
+      },
+      "response": []
+    },
+    {
+      "name": "5. Delete Task (DELETE /todos/:id)",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/todos/{{todo_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["todos", "{{todo_id}}"]
+        },
+        "description": "Delete a todo task by its MongoDB _id"
+      },
+      "response": []
+    }
+  ]
+}
